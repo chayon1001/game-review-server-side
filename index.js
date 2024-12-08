@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const app = express();
@@ -24,7 +25,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
 
-        await client.connect();
+        // await client.connect();
 
         // Database and Collections
         const gameCollection = client.db('gameDB').collection('game');
@@ -121,7 +122,7 @@ async function run() {
         });
 
 
-        // Delete a game from the watchlist
+        
 
 
         app.delete('/myWatchlist/:id', async (req, res) => {
@@ -135,7 +136,7 @@ async function run() {
 
 
         // Confirm MongoDB connection
-        await client.db('admin').command({ ping: 1 });
+        // await client.db('admin').command({ ping: 1 });
         console.log('Successfully connected to MongoDB');
     } finally {
         // Keep the connection open for the server
